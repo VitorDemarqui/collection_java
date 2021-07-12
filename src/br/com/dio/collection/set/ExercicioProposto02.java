@@ -14,7 +14,7 @@ Ao final, exiba as linguagens no console, um abaixo da outra.
 */
 public class ExercicioProposto02 {
     public static void main(String[] args) {
-        Set<LinguagemFavorita> minhasLinguagensFavoritas = new HashSet<>();
+        Set<LinguagemFavorita> minhasLinguagensFavoritas = new HashSet<>();//criando hashset
         minhasLinguagensFavoritas.add(new LinguagemFavorita("Python", 1991, "Pycharm"));
         minhasLinguagensFavoritas.add(new LinguagemFavorita("JavaScript", 1995, "IntelliJ"));
         minhasLinguagensFavoritas.add(new LinguagemFavorita("Java", 1991, "Visual Studio Code"));

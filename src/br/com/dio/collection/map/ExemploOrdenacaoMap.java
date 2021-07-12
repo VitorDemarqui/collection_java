@@ -15,15 +15,18 @@ public class ExemploOrdenacaoMap {
     public static void main(String[] args) {
 
         System.out.println("--\tOrdem aleatória\t--");
+        //hashMap ordena por aleatório
         Map<String, Livro> meusLivros = new HashMap<>() {{
             put(" Hawking, Stephen", new Livro("Uma Breve História do Tempo", 256));
             put(" Duhigg, Charles", new Livro("O Poder do Hábito", 408));
             put(" Harari, Yuval Noah", new Livro("21 Lições Para o Século 21", 432));
         }};
+        //exibe todos
         for (Map.Entry<String, Livro> livro : meusLivros.entrySet())
             System.out.println(livro.getKey() + " - " + livro.getValue().getNome());
 
         System.out.println("--\tOrdem Inserção\t--");
+        //exibe por ordem de inserção é o linkedhashmap
         Map<String, Livro> meusLivros1 = new LinkedHashMap<>() {{
             put(" Hawking, Stephen", new Livro("Uma Breve História do Tempo", 256));
             put(" Duhigg, Charles", new Livro("O Poder do Hábito", 408));
@@ -33,13 +36,16 @@ public class ExemploOrdenacaoMap {
             System.out.println(livro.getKey() + " - " + livro.getValue().getNome());
 
         System.out.println("--\tOrdem alfabética autores\t--");
+        //ordem alfabetica é treemap
         Map<String, Livro> meusLivros2 = new TreeMap<>(meusLivros1);
         for (Map.Entry<String, Livro> livro : meusLivros2.entrySet())
             System.out.println(livro.getKey() + " - " + livro.getValue().getNome());
 
         System.out.println("--\tOrdem alfabética nomes dos livros\t--");
 
-        Set<Map.Entry<String, Livro>> meusLivros3 = new TreeSet<>(new ComparatorNome());
+        //criando set TreeSet
+        Set<Map.Entry<String, Livro>> meusLivros3 = new TreeSet<>(/*iniciando*/ new ComparatorNome());
+        //adiciona todos elementos a comparação
         meusLivros3.addAll(meusLivros.entrySet());
         for (Map.Entry<String, Livro> livro : meusLivros3)
             System.out.println(livro.getKey() + " - " + livro.getValue().getNome());
@@ -88,9 +94,11 @@ class Livro {
     }
 }
 
+//implementa comparator como argumento os tipos de elemento
 class ComparatorNome implements Comparator<Map.Entry<String, Livro>>{
 
     @Override
+    //comaparando por nome, compareToIgnoreCase estamos comparando
     public int compare(Map.Entry<String, Livro> l1, Map.Entry<String, Livro> l2) {
         return l1.getValue().getNome().compareToIgnoreCase(l2.getValue().getNome());
     }

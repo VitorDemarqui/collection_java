@@ -55,15 +55,22 @@ public class RefatoracaoOrdenacaoMap {
         });*/
 
         /*Set<Map.Entry<Integer, Contato>> set = new TreeSet<>(Comparator.comparing(
+        //chama o metodo comparing que recebe uma function
+        //tipo que quero que faça comparacao e qual o retorno depóis da virgula
                 new Function<Map.Entry<Integer, Contato>, Integer>() {
                     @Override
                     public Integer apply(Map.Entry<Integer, Contato> cont) {
                         return cont.getValue().getNumero();
                     }
                 }));*/
+        //do lado esquerdo o argumento que quer que seja comparado da direita o resultado
+        Set<Map.Entry<Integer, Contato>> set = new TreeSet<>(
+                //comparar usando cont e a logica seria pegnaodo o numero
+                Comparator.comparing(cont -> cont.getValue().getNumero()));
 
-        Set<Map.Entry<Integer, Contato>> set = new TreeSet<>(Comparator.comparing(
-                cont -> cont.getValue().getNumero()));
+
+
+
         set.addAll(agenda.entrySet());
         for (Map.Entry<Integer, Contato> entry: set) {
             System.out.println(entry.getKey() + " - " + entry.getValue().getNumero() +

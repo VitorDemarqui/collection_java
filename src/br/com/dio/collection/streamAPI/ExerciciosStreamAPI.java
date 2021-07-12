@@ -12,57 +12,71 @@ public class ExerciciosStreamAPI {
         List<String> numerosAleatorios =
                 Arrays.asList("1", "0", "4", "1", "2", "3", "9", "9", "6", "5");
 
-//        System.out.println("Imprima todos os elementos dessa lista de String: ");
-//        numerosAleatorios.stream()
-//                 .forEach(System.out::println);
-//        numerosAleatorios.forEach(System.out::println);
+        System.out.println("Imprima todos os elementos dessa lista de String: ");
+        //tem proprio forEach sem precisar de stream
+       // numerosAleatorios.stream().forEach(System.out::println);
+        //utilizando reference method
+        numerosAleatorios.forEach(System.out::println);
 
-//        System.out.println("Pegue os 5 primeiros números e coloque dentro de um Set:");
-//        numerosAleatorios.stream()
-//                .limit(5)
-//                .collect(Collectors.toSet())
-//                .forEach(System.out::println);
-//        Set<String> numerosAleatorios5Primeiros = numerosAleatorios.stream()
-//                .limit(5)
-//                .collect(Collectors.toSet());
-//        System.out.println(numerosAleatorios5Primeiros);
+        System.out.println("Pegue os 5 primeiros números e coloque dentro de um Set:");
+        numerosAleatorios.stream()
+                //limita a 5 numeros
+                .limit(5)
+                //pega algo de um lugar e capture para outro lugar
+                .collect(Collectors.toSet())
+                //imprime os textos
+                .forEach(System.out::println);
+
+        Set<String> numerosAleatorios5Primeiros = numerosAleatorios.stream()
+                .limit(5)
+                .collect(Collectors.toSet());
+           System.out.println(numerosAleatorios5Primeiros);
 
 //        System.out.println("Transforme esta lista de String em uma lista de números inteiros.");
 //        List<Integer> numerosAleatorios1 = numerosAleatorios.stream()
 //                .map(Integer::parseInt).collect(Collectors.toList());
+
         List<Integer> numerosAleatoriosInteger = numerosAleatorios.stream()
+                //map recebe uma function
                 .map(Integer::parseInt)
+                //transforma em uma lista de integer
                 .collect(Collectors.toList());
 
         //.forEach(System.out::println);
 
 
-//        System.out.println("Pegue os números pares e maiores que 2 e coloque em uma lista:");
-//        numerosAleatorios.stream()
-//                .map(Integer::parseInt)
-//                .filter(i -> i % 2 == 0 && i > 2)
-//                .collect(Collectors.toList())
-//                .forEach(System.out::println);
-//        List<Integer> listParesMaioresQue2 = numerosAleatorios.stream()
-//                .map(Integer::parseInt)
-//                .filter(i -> (i % 2 == 0 && i > 2))
-//                .collect(Collectors.toList());
-//        System.out.println(listParesMaioresQue2);
+      System.out.println("Pegue os números pares e maiores que 2 e coloque em uma lista:");
+        numerosAleatorios.stream()
+                .map(Integer::parseInt)
+                .filter(i -> i % 2 == 0 && i > 2)
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+        List<Integer> listParesMaioresQue2 = numerosAleatorios.stream()
+                .map(Integer::parseInt)
+                //faz a funcao depois retira
+                .filter(i -> (i % 2 == 0 && i > 2))
+                //insere na lista
+                .collect(Collectors.toList());
+       System.out.println(listParesMaioresQue2);
 
 //        System.out.println("Mostre a média dos números: ");
 //        numerosAleatorios1.stream()
 //                .average()
 //                .ifPresent(System.out::println);
-//        numerosAleatorios.stream()
-//                .mapToInt(Integer::parseInt)
-//                .average()
-//                .ifPresent(System.out::println);
+        numerosAleatorios.stream()
+                //faz manipulacoes com int
+                 .mapToInt(Integer::parseInt)
+                //verifica a media retorna um optionalDouble, ele evita retornal valor null
+                 .average()
+                //ifPresent recebe um double consumer e retorna um void
+                 .ifPresent(System.out::println);
 
-//        System.out.println("Remova os valores ímpares: ");
-//        numerosAleatorios1.removeIf(integer -> integer % 2 != 0);
-//        System.out.println(numerosAleatorios1);
-//        numerosAleatoriosInteger.removeIf(i -> (i % 2 != 0));
-//        System.out.println(numerosAleatoriosInteger);
+        /*System.out.println("Remova os valores ímpares: ");
+        numerosAleatorios.removeIf(i -> i%2 != 0);
+        System.out.println(numerosAleatorios);*/
+
+        numerosAleatoriosInteger.removeIf(i -> (i % 2 != 0));
+        System.out.println(numerosAleatoriosInteger);
 
 //        Para você
         System.out.println("Ignore os 3 primeiros elementos da lista e imprima o restante:");
